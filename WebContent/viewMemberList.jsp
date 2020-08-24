@@ -48,6 +48,9 @@ MEMBER 테이블의 내용
 	<td><a href="update/updateForm.sessionlogin?id=<%=rs.getString("id")%>"></a></td>
 	<td><%= rs.getString("id") %></td>
 	<td><%= rs.getString("password") %></td>
+	<td><%= rs.getString("name") %></td>
+	<td><%= rs.getString("email") %></td>
+	<td><%= rs.getString("address") %></td>
 </tr>
 <%
 		}

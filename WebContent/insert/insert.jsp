@@ -6,13 +6,13 @@
 <%@ page import = "java.sql.Connection" %>
 <%@ page import = "java.sql.PreparedStatement" %>
 <%@ page import = "java.sql.SQLException" %>
-
 <%
 	request.setCharacterEncoding("utf-8");
+%>
+<jsp:useBean id="memberInfo"  class="member.MemberInfo" />
+<jsp:setProperty name="memberInfo" property="*" />
 	
-	String memberid = request.getParameter("memberid");   //가져온 변수를 각각 String 변수에 넣는다//
-	String password= request.getParameter("password");
-	
+<% 
 	Class.forName("com.mysql.jdbc.Driver");
 	
 	Connection conn = null;
@@ -27,10 +27,13 @@
 		
 		
 		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);  /*디비에 들록하는 부분*/
-		pstmt = conn.prepareStatement(
-			"insert into sessionlogin values (?, ? )");
-		pstmt.setString(1, memberid);
-		pstmt.setString(2, password);
+		pstmt = conn.prepareStatement("insert into sessionlogin values (?, ?, ?, ?, ?)");
+		pstmt.setString(1,  memberInfo.getMemberid());
+		pstmt.setString(2,memberInfo.getPassword());
+		pstmt.setString(3, memberInfo.getName());
+		pstmt.setString(4, memberInfo.getEmail());
+		pstmt.setString(5, memberInfo.getAddress());
+		
 		pstmt.executeUpdate();
 	} finally {
 		if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
