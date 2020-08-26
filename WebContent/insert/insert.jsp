@@ -1,5 +1,5 @@
 <%@ page contentType = "text/html; charset=utf-8" %>
-
+<%@ page import="member.*" %>
 <%@ page buffer="8kb" %>
 
 <%@ page import = "java.sql.DriverManager" %>
@@ -9,12 +9,12 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="memberInfo"  class="member.MemberInfo" />
+<jsp:useBean id="memberInfo"  class="member.MemberInfo"  scope="session"/>
 <jsp:setProperty name="memberInfo" property="*" />
 	
 <% 
 	Class.forName("com.mysql.jdbc.Driver");
-	
+	String UserID = memberInfo.getMemberid();
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 
@@ -35,12 +35,14 @@
 		pstmt.setString(5, memberInfo.getAddress());
 		
 		pstmt.executeUpdate();
+		
+		session.setAttribute("memberid", UserID);
 	} finally {
 		if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 		if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	}
 
-	response.sendRedirect(request.getContextPath()+"/viewMemberList.jsp"); /*이거 넣으면 주소이동없이 바로이동 */
+	response.sendRedirect(request.getContextPath()+"/viewMemberOne.jsp?memberid="+UserID); /*이거 넣으면 주소이동없이 바로이동 */
 %>
 <html>
 <head><title>삽입</title></head>

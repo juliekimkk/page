@@ -14,12 +14,12 @@
 MEMBER 테이블의 내용
 <table width="100%" border="1">
 <tr>
-	<td>아이디</td><td>비밀번호</td><td>이름</td><td>e-Mail</td><td>주소</td>
+	<td>아이디</td><td>비밀번호</td><td>이름</td><td>이메일</td><td>주소</td>
 </tr>
 <%
 	// 1. JDBC 드라이버 로딩
 	Class.forName("com.mysql.jdbc.Driver");
-	
+	String UserID = request.getParameter("memberid");
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -30,7 +30,7 @@ MEMBER 테이블의 내용
 		String dbUser = "root";
 		String dbPass = "rootroot";
 		
-		String query = "select * from sessionlogin order by id";
+		String query = "select * from sessionlogin where id='"+UserID+"'";
 		
 		// 2. 데이터베이스 커넥션 생성
 		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
@@ -45,7 +45,7 @@ MEMBER 테이블의 내용
 		while(rs.next()) {
 %>
 <tr>
-	<td><a href="update/updateForm.sessionlogin?id=<%=rs.getString("id")%>"><%= rs.getString("id") %></a></td>
+	<td><a href="update/updateForm.jsp?id=<%=rs.getString("id")%>"><%=rs.getString("id")%></a></td>
 	<td><%= rs.getString("password") %></td>
 	<td><%= rs.getString("name") %></td>
 	<td><%= rs.getString("email") %></td>
@@ -66,6 +66,7 @@ MEMBER 테이블의 내용
 	}
 %>
 </table>
-
+xxxx
+<%=UserID %>
 </body>
 </html>

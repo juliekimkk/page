@@ -8,14 +8,16 @@
 <table border="1">
 <tr>
     <td>아이디</td>
-    <td><input type="text" name="memberid" size="10" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
+    <td><input type="text" name="memberid" size="15" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
     <td>비밀번호</td>
-    <td><input type="text" name="password" size="10" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
+    <td><input type="password" name="password" size="15" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
       <tr>
       <td>이름</td>
-    <td><input type="text" name="name" size="5" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
+    <td><input type="text" name="name" size="15" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
       <td>이메일</td>
-    <td><input type="text" name="email" size="20" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
+    <td><input type="text" name="email" size="15" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
+    </tr>  
+    <tr>
       <td>주소</td>
     <td><input type="text" name="address" size="20" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
    </tr>

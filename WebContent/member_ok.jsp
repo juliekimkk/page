@@ -37,7 +37,7 @@
 	
 	if(id.equals(rs.getString("id")) && pass.equals(rs.getString("password"))){
 		session.setAttribute("id",id);
-		response.sendRedirect("viewMemberList.jsp"); //아이디와 비밀번호가 일치할경우
+		response.sendRedirect("viewMemberOne.jsp"); //아이디와 비밀번호가 일치할경우
 		
 	}else if(id.equals(rs.getString("id"))){
 		out.println("<script>alert('비밀번호가 틀렸습니다.'); history.back();</script>");
