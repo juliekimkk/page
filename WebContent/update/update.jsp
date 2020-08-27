@@ -4,8 +4,10 @@
 <%@ page import = "java.sql.Connection" %>
 <%@ page import = "java.sql.PreparedStatement" %>
 <%@ page import = "java.sql.SQLException" %>
+<jsp:useBean id="memberInfo"  class="member.MemberInfo"  scope="session"/>
+<jsp:setProperty name="memberInfo" property="*" />
 
-<%
+<% 
 	request.setCharacterEncoding("utf-8");
 	
 	String id = request.getParameter("id");
@@ -15,11 +17,9 @@
 	String address = request.getParameter("address");
 	
 	int updateCount = 0;
-	
 	Class.forName("com.mysql.jdbc.Driver");
-	
 	Connection conn = null;
-	PreparedStatement  pstmt= null;
+	PreparedStatement  pstmt= null; //클래스명 형태
 	
 	try {
 		String jdbcDriver = "jdbc:mysql://localhost:3306/sessionlogin?" +
@@ -28,13 +28,14 @@
 		String dbPass = "rootroot";
 		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 		
-		String query = "update sessionlogin set password=?, name=?, email=?, address=? from sessionlogin where id='"+id+"'";
-		pstmt = conn.prepareStatement(query);
+		String query = "update sessionlogin set password=?, name=?, email=?, address=? from sessionlogin where id='"+id+"'"; 
+		pstmt = conn.prepareStatement(query);  //메소드명 기능
 
-		pstmt.setString(1,  password);
-		pstmt.setString(2,name);
-		pstmt.setString(3, email);
-		pstmt.setString(4, address);
+
+		pstmt.setString(1,memberInfo.getPassword());
+		pstmt.setString(2, memberInfo.getName());
+		pstmt.setString(3, memberInfo.getEmail());
+		pstmt.setString(4, memberInfo.getAddress());
 		
 		pstmt.executeUpdate();
 		

@@ -10,8 +10,7 @@
 <html>
 <head><title>회원 목록</title></head>
 <body>
-
-MEMBER 테이블의 내용
+회원가입완료. 마이페이지
 <table width="100%" border="1">
 <tr>
 	<td>아이디</td><td>비밀번호</td><td>이름</td><td>이메일</td><td>주소</td>
@@ -45,11 +44,14 @@ MEMBER 테이블의 내용
 		while(rs.next()) {
 %>
 <tr>
-	<td><a href="update/updateForm.jsp?id=<%=rs.getString("id")%>"><%=rs.getString("id")%></a></td>
+	<td><%=rs.getString("id")%></td>
 	<td><%= rs.getString("password") %></td>
 	<td><%= rs.getString("name") %></td>
 	<td><%= rs.getString("email") %></td>
 	<td><%= rs.getString("address") %></td>
+</tr>
+<tr>
+<button><a href="update/updateForm.jsp?id="></button>
 </tr>
 <%
 		}
@@ -66,7 +68,7 @@ MEMBER 테이블의 내용
 	}
 %>
 </table>
-xxxx
-<%=UserID %>
+개인정보 수정하기
+   <%=UserID %>
 </body>
 </html>
