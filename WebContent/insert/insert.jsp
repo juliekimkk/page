@@ -1,7 +1,6 @@
 <%@ page contentType = "text/html; charset=utf-8" %>
 <%@ page import="member.*" %>
 <%@ page buffer="8kb" %>
-
 <%@ page import = "java.sql.DriverManager" %>
 <%@ page import = "java.sql.Connection" %>
 <%@ page import = "java.sql.PreparedStatement" %>
@@ -9,6 +8,24 @@
 <jsp:useBean id="memberInfo"  class="member.MemberInfo"  scope="session"/>
 <jsp:setProperty name="memberInfo" property="*" />
 
+<%
+	FileOutputStream fos= new FileoutputStream("./aaa.txt");
+	InputStream is = null;
+	InputStreamReader isr= null;
+
+	out.print("[");
+	out.print(request.getContentStream);
+	
+
+	try {
+		is = new FileOutputStream("is.txt");
+		is = new PrintStream(fos);
+		System.setOut(ps);    //  System.out의 출력대상을 test.txt파일로 변경
+	} catch(FileNotFoundException e) {
+		System.err.println("File not found.");
+	} 
+	
+	while (%>
 <%
 	request.setCharacterEncoding("utf-8");
 

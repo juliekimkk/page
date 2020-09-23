@@ -20,6 +20,9 @@
     <tr>
       <td>주소</td>
     <td><input type="text" name="address" size="20" onmouseover="this.style.background='white'" onmouseout="this.style.background='pink'"></td>
+    
+    	<td>파일붙이기 :</td>
+    	<td><input type="file" name="file1"/><br/></td>
    </tr>
 
 
